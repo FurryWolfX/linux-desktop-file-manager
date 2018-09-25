@@ -2,6 +2,7 @@
 #include <QFile>
 #include <QMessageBox>
 #include <QInputDialog>
+#include <QProcess>
 
 #include "MainWindow.h"
 #include "ui_mainwindow.h"
@@ -85,6 +86,10 @@ void MainWindow::on_newButton_clicked()
         qDebug() << fileName;
         QString content = "[Desktop Entry]";
         FileUtil::writeTextFile(basePath + fileName + ".desktop", content);
+        QProcess *cmd = new QProcess;
+        cmd->start("chmod +x " + basePath + fileName + ".desktop"); // 赋予执行权限
+        cmd->waitForFinished();
+        delete cmd;
         this->on_reloadButton_clicked();
     }
 }
