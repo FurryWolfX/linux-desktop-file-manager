@@ -1,9 +1,10 @@
+#include <QDebug>
+#include <QFile>
+#include <QMessageBox>
+#include <QInputDialog>
+
 #include "MainWindow.h"
 #include "ui_mainwindow.h"
-
-#include "QDebug"
-#include "QFile"
-#include "QMessageBox"
 #include "FileUtil.h"
 
 QString MainWindow::basePath = "/home/wolfx/.local/share/applications/";
@@ -34,6 +35,8 @@ void MainWindow::getFiles() {
     }
 }
 
+
+
 void MainWindow::on_listWidget_itemActivated(QListWidgetItem *item)
 {
     currentPath = basePath + item->text();
@@ -52,7 +55,13 @@ void MainWindow::on_saveButton_clicked()
 {
     QString content = ui->plainTextEdit->toPlainText();
     qDebug() << content;
-    FileUtil::writeTextFile(currentPath, content);
+    int success = FileUtil::writeTextFile(currentPath, content);
+    qDebug() << success;
+    if (success == 0) {
+        QMessageBox::information(this,"消息","保存成功");
+    } else {
+        QMessageBox::warning(this,"警告","保存失败");
+    }
 }
 
 void MainWindow::on_deleteButton_clicked()
@@ -64,6 +73,18 @@ void MainWindow::on_deleteButton_clicked()
         currentPath = "";
         this->getFiles();
         ui->plainTextEdit->clear();
+        QMessageBox::information(this,"消息","删除成功");
     }
+}
 
+void MainWindow::on_newButton_clicked()
+{
+    bool ok = false;
+    QString fileName = QInputDialog::getText(this, "对话框", "请输入文件名（无后缀）" , QLineEdit::Normal, "", &ok);
+    if (ok) {
+        qDebug() << fileName;
+        QString content = "[Desktop Entry]";
+        FileUtil::writeTextFile(basePath + fileName + ".desktop", content);
+        this->on_reloadButton_clicked();
+    }
 }

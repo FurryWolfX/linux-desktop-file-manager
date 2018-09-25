@@ -1,9 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "QMainWindow"
-#include "QString"
-#include "QListWidgetItem"
+#include <QMainWindow>
+#include <QString>
+#include <QListWidgetItem>
 
 namespace Ui {
 class MainWindow;
@@ -26,6 +26,8 @@ private slots:
     void on_saveButton_clicked();
 
     void on_deleteButton_clicked();
+
+    void on_newButton_clicked();
 
 private:
     Ui::MainWindow *ui;

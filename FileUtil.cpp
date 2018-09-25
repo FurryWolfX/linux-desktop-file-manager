@@ -1,8 +1,9 @@
+#include <QDebug>
+#include <QFile>
+#include <QDir>
+#include <QByteArray>
+
 #include "FileUtil.h"
-#include "QDebug"
-#include "QFile"
-#include "QDir"
-#include "QByteArray"
 
 FileUtil::FileUtil()
 {

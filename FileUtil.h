@@ -1,7 +1,7 @@
 #ifndef FILEUTIL_H
 #define FILEUTIL_H
 
-#include "QString"
+#include <QString>
 
 class FileUtil
 {
