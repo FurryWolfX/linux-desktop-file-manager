@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         MainWindow.cpp \
-    FileUtil.cpp
+    QCodecUtil.cpp \
+    QFileUtil.cpp
 
 HEADERS += \
         MainWindow.h \
-    FileUtil.h
+    QCodecUtil.h \
+    QFileUtil.h
 
 FORMS += \
         mainwindow.ui

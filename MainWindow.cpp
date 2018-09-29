@@ -6,7 +6,7 @@
 
 #include "MainWindow.h"
 #include "ui_mainwindow.h"
-#include "FileUtil.h"
+#include "QFileUtil.h"
 
 QString MainWindow::basePath = "/home/wolfx/.local/share/applications/";
 QString MainWindow::currentPath = "";
@@ -28,7 +28,7 @@ MainWindow::~MainWindow()
  * @brief 获取文件列表，并加入listWidget
  */
 void MainWindow::getFiles() {
-    QStringList files = FileUtil::getFileNames(basePath);
+    QStringList files = QFileUtil::getFileNames(basePath);
     qDebug() << files;
     ui->listWidget->clear();
     for (QString fileName : files){
@@ -41,7 +41,7 @@ void MainWindow::getFiles() {
 void MainWindow::on_listWidget_itemActivated(QListWidgetItem *item)
 {
     currentPath = basePath + item->text();
-    QString content = FileUtil::readTextFile(currentPath);
+    QString content = QFileUtil::readTextFile(currentPath);
     currentPath = basePath + item->text();
     ui->plainTextEdit->clear();
     ui->plainTextEdit->setPlainText(content);
@@ -56,7 +56,7 @@ void MainWindow::on_saveButton_clicked()
 {
     QString content = ui->plainTextEdit->toPlainText();
     qDebug() << content;
-    int success = FileUtil::writeTextFile(currentPath, content);
+    int success = QFileUtil::writeTextFile(currentPath, content);
     qDebug() << success;
     if (success == 0) {
         QMessageBox::information(this,"消息","保存成功");
@@ -85,7 +85,7 @@ void MainWindow::on_newButton_clicked()
     if (ok) {
         qDebug() << fileName;
         QString content = "[Desktop Entry]";
-        FileUtil::writeTextFile(basePath + fileName + ".desktop", content);
+        QFileUtil::writeTextFile(basePath + fileName + ".desktop", content);
         QProcess *cmd = new QProcess;
         cmd->start("chmod +x " + basePath + fileName + ".desktop"); // 赋予执行权限
         cmd->waitForFinished();

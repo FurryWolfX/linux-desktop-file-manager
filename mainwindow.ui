@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>472</width>
+    <width>634</width>
     <height>330</height>
    </rect>
   </property>
@@ -56,6 +56,11 @@
       <height>281</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Sans Serif</family>
+     </font>
+    </property>
     <property name="plainText">
      <string/>
     </property>
@@ -68,6 +73,11 @@
       <width>161</width>
       <height>281</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans Serif</family>
+     </font>
     </property>
     <property name="sortingEnabled">
      <bool>true</bool>
@@ -123,6 +133,39 @@
     </property>
     <property name="text">
      <string>new</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>10</y>
+      <width>151</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;
+ &lt;head&gt;
+ &lt;style&gt;
+p {margin:0;}
+&lt;/style&gt;
+&lt;/head&gt;
+ &lt;body&gt;
+  &lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;常用示例&lt;/span&gt;&lt;/p&gt;
+  &lt;br /&gt;
+  &lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;[Desktop Entry] &lt;/span&gt;&lt;span style=&quot; font-size:8pt; color:#868686;&quot;&gt;默认入口&lt;/span&gt;&lt;/p&gt;
+  &lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Name= &lt;/span&gt;&lt;span style=&quot; font-size:8pt; color:#868686;&quot;&gt;应用名称&lt;/span&gt;&lt;/p&gt;
+  &lt;p align=&quot;justify&quot;&gt;Version=1.0 &lt;span style=&quot; color:#868686;&quot;&gt;版本&lt;/span&gt;&lt;/p&gt;
+  &lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Icon= &lt;/span&gt;&lt;span style=&quot; font-size:8pt; color:#868686;&quot;&gt;图标名称或路径&lt;/span&gt;&lt;/p&gt;
+  &lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Comment= &lt;/span&gt;&lt;span style=&quot; font-size:8pt; color:#868686;&quot;&gt;描述&lt;/span&gt;&lt;/p&gt;
+  &lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Terminal= &lt;/span&gt;&lt;span style=&quot; font-size:8pt; color:#868686;&quot;&gt;是否显示终端&lt;/span&gt;&lt;/p&gt;
+  &lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Type=Application &lt;/span&gt;&lt;span style=&quot; font-size:8pt; color:#868686;&quot;&gt;类型默认应用&lt;/span&gt;&lt;/p&gt;
+  &lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Categories=Application; &lt;/span&gt;&lt;span style=&quot; font-size:8pt; color:#868686;&quot;&gt;分类&lt;/span&gt;&lt;/p&gt;
+  &lt;p align=&quot;justify&quot;&gt;Path= &lt;span style=&quot; color:#868686;&quot;&gt;目录路径&lt;/span&gt;&lt;/p&gt;
+  &lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Exec= &lt;/span&gt;&lt;span style=&quot; font-size:8pt; color:#868686;&quot;&gt;执行文件路径&lt;/span&gt;&lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>

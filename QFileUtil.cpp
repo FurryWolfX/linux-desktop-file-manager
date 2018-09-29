@@ -2,10 +2,13 @@
 #include <QFile>
 #include <QDir>
 #include <QByteArray>
+#include <QJsonDocument>
+#include <QJsonParseError>
+#include <QJsonObject>
 
-#include "FileUtil.h"
+#include "QFileUtil.h"
 
-FileUtil::FileUtil()
+QFileUtil::QFileUtil()
 {
 
 }
@@ -15,7 +18,7 @@ FileUtil::FileUtil()
  * @param filePath
  * @return
  */
-QString FileUtil::readTextFile(QString filePath) {
+QString QFileUtil::readTextFile(const QString filePath) {
     QFile file(filePath);
     QString displayString;
     if (file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -40,7 +43,7 @@ QString FileUtil::readTextFile(QString filePath) {
  * @param str
  * @return
  */
-int FileUtil::writeTextFile(QString filePath, QString str) {
+int QFileUtil::writeTextFile(const QString filePath, const QString str) {
     QFile f(filePath);
     if(!f.open(QIODevice::ReadWrite | QIODevice::Text))
     {
@@ -62,7 +65,7 @@ int FileUtil::writeTextFile(QString filePath, QString str) {
  * @param path
  * @return
  */
-QStringList FileUtil::getFileNames(const QString &path)
+QStringList QFileUtil::getFileNames(const QString &path)
 {
     QDir dir(path);
     QStringList nameFilters;
@@ -70,4 +73,30 @@ QStringList FileUtil::getFileNames(const QString &path)
     nameFilters << "*.desktop" << "*.txt";
     QStringList files = dir.entryList(nameFilters, QDir::Files|QDir::Readable, QDir::Name);
     return files;
+}
+
+/**
+ * @brief 读取json格式的文件
+ * @param filePath
+ * @return
+ */
+QJsonObject QFileUtil::readJsonFile(const QString filePath)
+{
+    QFile file(filePath);
+    if (file.open(QIODevice::ReadOnly)) {
+        QByteArray jsonData = file.readAll();
+        file.close();
+        QJsonParseError jsonError;
+        QJsonDocument jsonDoc(QJsonDocument::fromJson(jsonData, &jsonError));
+        if (jsonError.error != QJsonParseError::NoError) {
+            qDebug() << "json parse error!";
+            return QJsonDocument(QJsonDocument::fromJson("{}")).object();
+        } else {
+            QJsonObject jsonObject = jsonDoc.object();
+            return jsonObject;
+        }
+    } else {
+        qDebug() << "file read error!";
+        return QJsonDocument(QJsonDocument::fromJson("{}")).object();;
+    }
 }
