@@ -87,7 +87,7 @@ void MainWindow::on_newButton_clicked()
         QString content = "[Desktop Entry]";
         QFileUtil::writeTextFile(basePath + fileName + ".desktop", content);
         QProcess *cmd = new QProcess;
-        cmd->start("chmod +x " + basePath + fileName + ".desktop"); // 赋予执行权限
+        cmd->start("chmod 777 " + basePath + fileName + ".desktop"); // 赋予执行权限
         cmd->waitForFinished();
         delete cmd;
         this->on_reloadButton_clicked();
